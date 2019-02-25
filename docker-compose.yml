@@ -1,0 +1,23 @@
+version: '2'
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    links:
+      - "db:${DB_HOST}"
+  db:
+    image: postgres
+    env_file: .env
+    volumes:
+      - ./.dev-data/db:/var/lib/postgresql/data
+    restart: always
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8000:8000
