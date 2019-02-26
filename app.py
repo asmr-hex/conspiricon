@@ -1,4 +1,5 @@
 import requests
+import re
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, Response
 app = Flask(__name__)
@@ -10,10 +11,6 @@ def main():
 @app.route('/submit')
 def submit():
     return render_template('submit.html')
-
-# @app.route('/vi-assets/<path:p>')
-# def override_nyt_assets(p=''):
-#     return requests.get('https://www.nytimes.com/vi-assets/{}'.format(p)).content
 
 @app.route('/nyt')
 def override_nyt():
@@ -56,7 +53,17 @@ def override_nyt():
 
     soup = BeautifulSoup(resp.content, "html.parser")
     soup.find('link', rel="stylesheet")['href'] = 'https://www.nytimes.com' + soup.find('link', rel="stylesheet")['href']
-    print(soup.find('link', rel="stylesheet"))
+
+    # for tag in soup.find_all('link', recursive=True):
+    #     if not tag.has_attr('href'):
+    #         continue
+        
+    #     match = re.match(r'/vi-assets/.*', tag['href'])
+    #     if match:
+    #         tag['href'] = 'https://www.nytimes.com' + match[0]
+    #         print(tag)
+    
+    soup.findAll('div', {"class": 'css-8oysku e18972d71'})[0].string = "ConspiriCon 2019"
     
     response = Response(str(soup), resp.status_code, headers)
     return response
