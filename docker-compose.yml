@@ -6,22 +6,6 @@ services:
       context: .
     volumes:
       - .:/app
-    ports:
-      - 5000:5000
-    depends_on:
-      - db
-    links:
-      - "db:${DB_HOST}"
-
-  db:
-    image: postgres
-    env_file: .env
-    volumes:
-      - ./.dev-data/db:/var/lib/postgresql/data
-    restart: always
-
-  adminer:
-    image: adminer
-    restart: always
+      - "./presentations:/app/media/${PRESENTATION_UPLOAD_DIR}"
     ports:
       - 8000:8000

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="rsvp-form">
+    <div class="rsvp-header">RSVP</div>
+    <form action="{% url 'submit_rsvp' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">RSVP</button>
+    </form>
+  </div>
+  <div class="attendee-container">
+    <div class="attendee-header">Attending</div>
+      <div class="attendee-list">
+        {% for attendee in attendees %}
+          <div class="attendee-name">{{ attendee.name }}</div>
+        {% endfor %}
+      </div>
+  </div>
+
+{% endblock content %}

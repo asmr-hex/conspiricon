@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <pre style="font-size:xx-small;">
+  .     .       .  .   . .   .   . .    +  .
+  .     .  :     .    .. :. .___---------___.
+       .  .   .    .  :.:. _".^ .^ ^.  '.. :"-_. .
+    .  :       .  .  .:../:            . .^  :.:\.
+        .   . :: +. :.:/: .   .    .        . . .:\
+ .  :    .     . _ :::/:               .  ^ .  . .:\
+  .. . .   . - : :.:./.                        .  .:\
+  .      .     . :..|:                    .  .  ^. .:|
+    .       . : : ..||        .                . . !:|
+  .     . . . ::. ::\(                           . :)/
+ .   .     : . : .:.|. ######              .#######::|
+  :.. .  :-  : .:  ::|.#######           ..########:|
+ .  .  .  ..  .  .. :\ ########          :######## :/
+  .        .+ :: : -.:\ ########       . ########.:/
+    .  .+   . . . . :.:\. #######       #######..:/
+      :: . . . . ::.:..:.\           .   .   ..:/
+   .   .   .  .. :  -::::.\.       | |     . .:/
+      .  :  .  .  .-:.":.::.\             ..:/
+ .      -.   . . . .: .:::.:.\.           .:/
+.   .   .  :      : ....::_:..:\   ___.  :/
+   .   .  .   .:. .. .  .: :.:.:\       :/
+     +   .   .   : . ::. :.:. .:.|\  .:/|
+     .         +   .  .  ...:: ..|  --.:|
+.      . . .   .  .  . ... :..:.."(  ..)"
+ .   .       .      :  .   .: ::/  .  .::\
+  </pre>
+  <div class="about">
+    <div class="question">what is this?</div>
+    This is the second annual conspiracy theory conference held by the citizens of the world.</br></br>
+    <div class="question">what should I present on?</div>
+    Any conspiracy theory you are interested in.</br></br>
+    <div class="question">how do i submit my presentation?</div>
+    Head to the <a href="{% url 'presentations' %}">talks</a> page. either include a PDF file upload or the URL to your shared presentation.</br></br>
+    <div class="question">how long should my presentation be?</div>
+    Maximum 10 minutes prolly</br></br>
+  </div>
+{% endblock content %}

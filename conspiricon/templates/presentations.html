@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="presentations-container">
+    <div class="rsvp-header">Talks</div>
+    <div class="presentation-list">
+    {% for presentation in presentations %}
+      <div class="presentation-container">
+        <div class="presentation-header">
+          <div class="presentation-title-name">
+            <div class="presentation-title">"{{ presentation.title }}"</div>
+            <div class="presentation-presenter">{{ presentation.presenter }}</div>
+          </div>
+          {% if presentation.file %}
+            <a href="{{ presentation.file.url }}">download</a>
+          {% else %}
+            <a href="{{ presentation.url }}" target="_blank">open</a>
+          {% endif %}
+        </div>
+        <div class="presentation-description">{{ presentation.description}}</div>
+      </div>
+    {% endfor %}
+  </div>
+  </div>
+  <div class="submit-container">
+    <div class="rsvp-header">Submit a Talk</div>
+    <form action="{% url 'submit' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+{% endblock content %}
